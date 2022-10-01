@@ -16394,7 +16394,7 @@ echo $ECHO_N "checking for Expat XML Parser libraries... $ECHO_C" >&6; }
             ac_ext=cpp
 ac_cpp='$CXXCPP $CPPFLAGS'
 ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
-ac_link='$CXX -o conftest$ac_exeext $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
+ac_link='$CXX -o conftest$ac_exeext conftest.$ac_ext $CXXFLAGS $CPPFLAGS $LDFLAGS $LIBS >&5'
 ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
 
             cat >conftest.$ac_ext <<_ACEOF

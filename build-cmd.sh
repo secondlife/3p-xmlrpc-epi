@@ -49,7 +49,13 @@ pushd "$XMLRPCEPI_SOURCE_DIR"
         windows*)
             load_vsvars
 
-            build_sln "xmlrpcepi.sln" "Release|$AUTOBUILD_WIN_VSPLATFORM" "xmlrpcepi"
+            msbuild.exe \
+                "xmlrpcepi.sln" \
+                -t:xmlrpcepi \
+                -p:Configuration=Release \
+                -p:Platform=$AUTOBUILD_WIN_VSPLATFORM \
+                -p:PlatformToolset=v143
+
             mkdir -p "$stage/lib/release"
 
             if [ "$AUTOBUILD_ADDRSIZE" = 32 ]
@@ -67,7 +73,7 @@ pushd "$XMLRPCEPI_SOURCE_DIR"
                 --with-expat=no \
                 --with-expat-lib="$stage/packages/lib/release/libexpat.dylib" \
                 --with-expat-inc="$stage/packages/include/expat"
-            make
+            make -j$(nproc)
             make install
             mkdir -p "$stage/include/xmlrpc-epi"
             mv "$stage/include/"*.h "$stage/include/xmlrpc-epi/"
@@ -86,7 +92,7 @@ pushd "$XMLRPCEPI_SOURCE_DIR"
                 --with-expat=no \
                 --with-expat-lib="$stage/packages/lib/release/libexpat.so" \
                 --with-expat-inc="$stage/packages/include/expat"
-            make
+            make -j$(nproc)
             make install
             mkdir -p "$stage/include/xmlrpc-epi"
             mv "$stage/include/"*.h "$stage/include/xmlrpc-epi/"
