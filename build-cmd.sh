@@ -29,6 +29,9 @@ source_environment_tempfile="$stage/source_environment.sh"
 "$autobuild" source_environment > "$source_environment_tempfile"
 . "$source_environment_tempfile"
 
+# remove_cxxstd
+source "$(dirname "$AUTOBUILD_VARIABLES_FILE")/functions"
+
 copy_headers ()
 {
     cp src/base64.h $1
@@ -49,7 +52,13 @@ pushd "$XMLRPCEPI_SOURCE_DIR"
         windows*)
             load_vsvars
 
-            build_sln "xmlrpcepi.sln" "Release|$AUTOBUILD_WIN_VSPLATFORM" "xmlrpcepi"
+            msbuild.exe \
+                "xmlrpcepi.sln" \
+                -t:xmlrpcepi \
+                -p:Configuration=Release \
+                -p:Platform=$AUTOBUILD_WIN_VSPLATFORM \
+                -p:PlatformToolset=v143
+
             mkdir -p "$stage/lib/release"
 
             if [ "$AUTOBUILD_ADDRSIZE" = 32 ]
@@ -63,11 +72,13 @@ pushd "$XMLRPCEPI_SOURCE_DIR"
         ;;
         darwin*)
             opts="-arch $AUTOBUILD_CONFIGURE_ARCH $LL_BUILD_RELEASE"
-            CFLAGS="$opts" CXXFLAGS="$opts" LDFLAGS="$opts" ./configure --prefix="$stage" \
+            plainopts="$(remove_cxxstd $opts)"
+            CFLAGS="$plainopts" CXXFLAGS="$opts" LDFLAGS="$plainopts" \
+            ./configure --prefix="$stage" \
                 --with-expat=no \
                 --with-expat-lib="$stage/packages/lib/release/libexpat.dylib" \
                 --with-expat-inc="$stage/packages/include/expat"
-            make
+            make -j$(nproc)
             make install
             mkdir -p "$stage/include/xmlrpc-epi"
             mv "$stage/include/"*.h "$stage/include/xmlrpc-epi/"
@@ -82,11 +93,12 @@ pushd "$XMLRPCEPI_SOURCE_DIR"
         ;;
         linux*)
             opts="-m$AUTOBUILD_ADDRSIZE $LL_BUILD_RELEASE"
-            CFLAGS="$opts" CXXFLAGS="$opts" ./configure --prefix="$stage" \
+            plainopts="$(remove_cxxstd $opts)"
+            CFLAGS="$plainopts" CXXFLAGS="$opts" ./configure --prefix="$stage" \
                 --with-expat=no \
                 --with-expat-lib="$stage/packages/lib/release/libexpat.so" \
                 --with-expat-inc="$stage/packages/include/expat"
-            make
+            make -j$(nproc)
             make install
             mkdir -p "$stage/include/xmlrpc-epi"
             mv "$stage/include/"*.h "$stage/include/xmlrpc-epi/"
