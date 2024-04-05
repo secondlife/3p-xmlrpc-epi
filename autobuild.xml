@@ -1,19 +1,14 @@
 <?xml version="1.0" ?>
-<llsd><map>
+<llsd>
+<map>
+    <key>version</key>
+    <string>1.3</string>
+    <key>type</key>
+    <string>autobuild</string>
     <key>installables</key>
     <map>
       <key>expat</key>
       <map>
-        <key>copyright</key>
-        <string>Copyright (c) 1998, 1999, 2000 Thai Open Source Software Center Ltd and Clark Cooper - Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006 Expat maintainers.</string>
-        <key>description</key>
-        <string>Expat is an XML parser library written in C</string>
-        <key>license</key>
-        <string>expat</string>
-        <key>license_file</key>
-        <string>LICENSES/expat.txt</string>
-        <key>name</key>
-        <string>expat</string>
         <key>platforms</key>
         <map>
           <key>darwin</key>
@@ -33,11 +28,11 @@
             <key>archive</key>
             <map>
               <key>hash</key>
-              <string>b85526ca80b6a7e73c7870285cf68d568f742095</string>
+              <string>953b8119c28e81b327197d1de3d44a78c6cd30dc</string>
               <key>hash_algorithm</key>
               <string>sha1</string>
               <key>url</key>
-              <string>https://github.com/secondlife/3p-expat/releases/download/v2.1.1.1f36d02/expat-2.1.1.1f36d02-darwin64-1f36d02.tar.zst</string>
+              <string>https://github.com/secondlife/3p-expat/releases/download/v2.6.2-r2/expat-2.6.2-r2-darwin64-8518267865.tar.zst</string>
             </map>
             <key>name</key>
             <string>darwin64</string>
@@ -59,11 +54,11 @@
             <key>archive</key>
             <map>
               <key>hash</key>
-              <string>4cd82e2dec06ddff19e9b3dc0254f2593ec80452</string>
+              <string>b1f58b1f340a3bab726ad017fcf8515ffea4c3de</string>
               <key>hash_algorithm</key>
               <string>sha1</string>
               <key>url</key>
-              <string>https://github.com/secondlife/3p-expat/releases/download/v2.1.1.1f36d02/expat-2.1.1.1f36d02-linux64-1f36d02.tar.zst</string>
+              <string>https://github.com/secondlife/3p-expat/releases/download/v2.6.2-r2/expat-2.6.2-r2-linux64-8518267865.tar.zst</string>
             </map>
             <key>name</key>
             <string>linux64</string>
@@ -87,34 +82,32 @@
             <key>archive</key>
             <map>
               <key>hash</key>
-              <string>47c01a89bc32c5740efe51be43e459ffd9b7cd34</string>
+              <string>6e7a67b5ea6cf826862c9f0a5988a3ad8791a759</string>
               <key>hash_algorithm</key>
               <string>sha1</string>
               <key>url</key>
-              <string>https://github.com/secondlife/3p-expat/releases/download/v2.1.1.1f36d02/expat-2.1.1.1f36d02-windows64-1f36d02.tar.zst</string>
+              <string>https://github.com/secondlife/3p-expat/releases/download/v2.6.2-r2/expat-2.6.2-r2-windows64-8518267865.tar.zst</string>
             </map>
             <key>name</key>
             <string>windows64</string>
           </map>
         </map>
+        <key>license</key>
+        <string>expat</string>
+        <key>license_file</key>
+        <string>LICENSES/expat.txt</string>
+        <key>copyright</key>
+        <string>Copyright (c) 1998, 1999, 2000 Thai Open Source Software Center Ltd and Clark Cooper - Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006 Expat maintainers.</string>
         <key>version</key>
-        <string>2.1.1.1f36d02</string>
+        <string>2.6.2-r2</string>
+        <key>name</key>
+        <string>expat</string>
+        <key>description</key>
+        <string>Expat is an XML parser library written in C</string>
       </map>
     </map>
     <key>package_description</key>
     <map>
-      <key>canonical_repo</key>
-      <string>https://github.com/secondlife/3p-xmlrpc-epi</string>
-      <key>copyright</key>
-      <string>Copyright: (C) 2000 Epinions, Inc.</string>
-      <key>description</key>
-      <string>XMLRPC Library</string>
-      <key>license</key>
-      <string>xmlrpc-epi</string>
-      <key>license_file</key>
-      <string>LICENSES/xmlrpc-epi.txt</string>
-      <key>name</key>
-      <string>xmlrpc-epi</string>
       <key>platforms</key>
       <map>
         <key>common</key>
@@ -147,8 +140,6 @@
         </map>
         <key>darwin</key>
         <map>
-          <key>build_directory</key>
-          <string>stage</string>
           <key>configurations</key>
           <map>
             <key>default</key>
@@ -166,13 +157,13 @@
           <array>
             <string>lib/release/*.a</string>
           </array>
+          <key>build_directory</key>
+          <string>stage</string>
           <key>name</key>
           <string>darwin</string>
         </map>
         <key>linux</key>
         <map>
-          <key>build_directory</key>
-          <string>stage</string>
           <key>configurations</key>
           <map>
             <key>default</key>
@@ -190,13 +181,13 @@
           <array>
             <string>lib/release/*.a</string>
           </array>
+          <key>build_directory</key>
+          <string>stage</string>
           <key>name</key>
           <string>linux</string>
         </map>
         <key>windows</key>
         <map>
-          <key>build_directory</key>
-          <string>stage</string>
           <key>configurations</key>
           <map>
             <key>default</key>
@@ -214,15 +205,26 @@
           <array>
             <string>lib/release/*.lib</string>
           </array>
+          <key>build_directory</key>
+          <string>stage</string>
           <key>name</key>
           <string>windows</string>
         </map>
       </map>
+      <key>license</key>
+      <string>xmlrpc-epi</string>
+      <key>license_file</key>
+      <string>LICENSES/xmlrpc-epi.txt</string>
+      <key>copyright</key>
+      <string>Copyright: (C) 2000 Epinions, Inc.</string>
       <key>version_file</key>
       <string>VERSION.txt</string>
+      <key>name</key>
+      <string>xmlrpc-epi</string>
+      <key>canonical_repo</key>
+      <string>https://github.com/secondlife/3p-xmlrpc-epi</string>
+      <key>description</key>
+      <string>XMLRPC Library</string>
     </map>
-    <key>type</key>
-    <string>autobuild</string>
-    <key>version</key>
-    <string>1.3</string>
-  </map></llsd>
+  </map>
+</llsd>
