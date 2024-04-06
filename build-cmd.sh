@@ -73,7 +73,7 @@ pushd "$XMLRPCEPI_SOURCE_DIR"
         darwin*)
             opts="-arch $AUTOBUILD_CONFIGURE_ARCH $LL_BUILD_RELEASE"
             plainopts="$(remove_cxxstd $opts)"
-            CFLAGS="$plainopts" CXXFLAGS="$opts" LDFLAGS="$plainopts" \
+            CFLAGS="$plainopts" CXXFLAGS="$opts" LDFLAGS="$plainopts" CC="clang" \
             ./configure --prefix="$stage" \
                 --with-expat=no \
                 --with-expat-lib="$stage/packages/lib/release/libexpat.a" \
