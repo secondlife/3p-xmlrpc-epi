@@ -76,7 +76,7 @@ pushd "$XMLRPCEPI_SOURCE_DIR"
             CFLAGS="$plainopts" CXXFLAGS="$opts" LDFLAGS="$plainopts" \
             ./configure --prefix="$stage" \
                 --with-expat=no \
-                --with-expat-lib="$stage/packages/lib/release/libexpat.dylib" \
+                --with-expat-lib="$stage/packages/lib/release/libexpat.a" \
                 --with-expat-inc="$stage/packages/include/expat"
             make -j$(nproc)
             make install
@@ -96,7 +96,7 @@ pushd "$XMLRPCEPI_SOURCE_DIR"
             plainopts="$(remove_cxxstd $opts)"
             CFLAGS="$plainopts" CXXFLAGS="$opts" ./configure --prefix="$stage" \
                 --with-expat=no \
-                --with-expat-lib="$stage/packages/lib/release/libexpat.so" \
+                --with-expat-lib="$stage/packages/lib/release/libexpat.a" \
                 --with-expat-inc="$stage/packages/include/expat"
             make -j$(nproc)
             make install
